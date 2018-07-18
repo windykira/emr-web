@@ -10,36 +10,38 @@
 
 <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
 
-        $("#login").click(function(){
+        var token = "";
+        $("#login").click(function () {
 
             var data = {
-                username:"admin",
-                password:"admin"
+                username: "admin",
+                password: "admin"
             };
             $.ajax({
                 type: "POST",
-                url: "http://172.30.2.228:8080/api/login",
-                data:data,
+                url: "http://192.168.0.104:8080/api/login",
+                data: data,
                 async: false,
-                error: function (request) {
-                    alert("Connection error");
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status + "," + XMLHttpRequest.readyState + "," + textStatus);
                 },
                 success: function (data) {
-                    alert(data);
+                    token = JSON.parse(data).token;
+                    //alert(JSON.parse(data).token);
                 }
             });
         });
 
-        $("#test").click(function(){
+        $("#test").click(function () {
 
             $.ajax({
                 type: "GET",
-                url: "http://172.30.2.228:8080/api/demo/list",
-                async: false,
-                error: function (request) {
-                    alert("Connection error");
+                url: "http://192.168.0.104:8080/api/demo/list",
+                headers: {'Authorization': token},
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status + "," + XMLHttpRequest.readyState + "," + textStatus);
                 },
                 success: function (data) {
                     alert(data);
