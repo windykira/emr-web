@@ -6,10 +6,31 @@
 </head>
 <body>
 <input type="button" id="test" value="test"/>
+<input type="button" id="login" value="login"/>
 
 <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
+
+        $("#login").click(function(){
+
+            var data = {
+                username:"admin",
+                password:"admin"
+            };
+            $.ajax({
+                type: "POST",
+                url: "http://172.30.2.228:8080/api/login",
+                data:data,
+                async: false,
+                error: function (request) {
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
 
         $("#test").click(function(){
 
