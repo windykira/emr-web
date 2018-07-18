@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="test" value="test"/>
+
+<script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        $("#test").click(function(){
+
+            $.ajax({
+                type: "GET",
+                url: "http://172.30.2.228:8080/api/demo/list",
+                async: false,
+                error: function (request) {
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
