@@ -21,7 +21,8 @@
             };
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.104:8080/api/login",
+                //url: "http://192.168.0.104:8080/api/login",
+                url: "/api/login",
                 data: data,
                 async: false,
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -39,10 +40,10 @@
             var temp = "";
             $.ajax({
                 type: "GET",
-                url: "http://192.168.0.104:8080/api/demo/list",
-                beforeSend: function (request) {
+                url: "/api/demo/list",
+                /*beforeSend: function (request) {
                     request.setRequestHeader("Authorization", token);
-                },
+                },*/
                 dataType: 'JSON',
                 async: false,
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
