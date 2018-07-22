@@ -1,5 +1,6 @@
 package com.haoze.controller.demo;
 
+import com.haoze.api.user.UserService;
 import com.haoze.model.demo.DemoEntity;
 import com.haoze.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class DemoController {
 
     @Autowired
     DemoService demoService;
+    /*@Autowired
+    UserService userService;*/
 
     @GetMapping("/list")
     @ResponseBody

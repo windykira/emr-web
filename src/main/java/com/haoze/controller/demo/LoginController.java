@@ -1,12 +1,14 @@
 package com.haoze.controller.demo;
 
 import com.alibaba.fastjson.JSONObject;
+import com.haoze.api.user.UserService;
 import com.haoze.utils.MD5Util;
 import com.haoze.utils.ResponseResult;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/api")
 public class LoginController {
 
+    @Autowired
+    UserService userService;
+
     @GetMapping({ "/", "" ,"/login"})
     String login(Model model) {
+        userService.list();
         return "login";
     }
 
