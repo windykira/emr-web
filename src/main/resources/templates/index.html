@@ -30,7 +30,8 @@
                     alert(XMLHttpRequest.status + "," + XMLHttpRequest.readyState + "," + textStatus);
                 },
                 success: function (data) {
-                    token = JSON.parse(data).token;
+                    //token = JSON.parse(data).token;
+                    parent.location.href = "/api/index";
                     //alert(JSON.parse(data).token);
                 }
             });

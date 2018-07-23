@@ -40,6 +40,8 @@ public class UserRealm extends AuthorizingRealm {
 		Set<String> roles = emrMenuService.listUserRoles(userID);*/
 		Set<String> perms = new HashSet();
 		Set<String> roles = new HashSet();
+		perms.add("system:user:user1");
+		roles.add("testRole");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.setStringPermissions(perms);
 		info.setRoles(roles);
