@@ -3,6 +3,7 @@ package com.haoze.controller.demo;
 import com.alibaba.fastjson.JSONObject;
 import com.haoze.api.user.UserService;
 import com.haoze.frameutils.OcsCache;
+import com.haoze.model.user.UserInfo;
 import com.haoze.utils.MD5Util;
 import com.haoze.utils.ResponseResult;
 import org.apache.shiro.SecurityUtils;
@@ -36,7 +37,7 @@ public class LoginController {
     String login(Model model) {
         System.out.println(OcsCache.get("test")+"****");
         OcsCache.put("test","dubbo");
-        userService.list();
+        List<UserInfo> users = userService.list();
         System.out.println(OcsCache.get("test")+"****");
         return "login";
     }
